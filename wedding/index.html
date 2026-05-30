@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <title>Sabah & Abdul Wahil — Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Cinzel:wght@400;500&family=Montserrat:wght@100;200;300;400&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet" />
+
+    <meta property="og:title" content="Sabah Suleiman & Abdul Wahid Wedding Invitation">
+
+    <meta property="og:description" content="You are invited to celebrate our wedding on 13 August 2026 at Melinne Saccos Hall, Fuoni Zanzibar">
+
+    <meta property="og:image" content="https://yourdomain.com/IMAGE/cover.jpg">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url" content="https://yourdomain.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent
+        }
+        
+        html {
+            scroll-behavior: smooth
+        }
+        
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            background: #050305
+        }
+        
+         :root {
+            --g1: #c9a84c;
+            --g2: #d4a843;
+            --g3: #e8c97a;
+            --g4: #f5e4b8;
+            --g5: #a07828;
+            --dark: #050305;
+            --dark2: #0a0708;
+            --dark3: #110d0a;
+            --dark4: #1a1208;
+            --cream: #f5efd8;
+            --rose: #c87888;
+            --rose2: #e8a0b0;
+            --text: rgba(245, 239, 216, 1);
+            --text2: rgba(245, 239, 216, .75);
+            --text3: rgba(245, 239, 216, .45);
+            --gold-glow: rgba(201, 168, 76, .18);
+            --r: 4px;
+        }
+        /* ─────── CANVAS BG STARS ─────── */
+        
+        #starCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        /* ─────── CURTAIN ─────── */
+        
+        #curtain {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            overflow: hidden;
+            cursor: pointer;
+            background: radial-gradient(ellipse 80% 70% at 50% 45%, #1a1005 0%, #050305 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.2s cubic-bezier(.4, 0, .2, 1);
+        }
+        
+        #curtain.away {
+            opacity: 0;
+            pointer-events: none
+        }
+        /* curtain ambient glow */
+        
+        #curtain::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse 60% 50% at 50% 48%, rgba(201, 168, 76, .10) 0%, transparent 70%);
+        }
+        /* corner frames — dark gold */
+        
+        .cc {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .cc.tl {
+            top: 0;
+            left: 0
+        }
+        
+        .cc.tr {
+            top: 0;
+            right: 0;
+            transform: scaleX(-1)
+        }
+        
+        .cc.bl {
+            bottom: 0;
+            left: 0;
+            transform: scaleY(-1)
+        }
+        
+        .cc.br {
+            bottom: 0;
+            right: 0;
+            transform: scale(-1)
+        }
+        
+        .ct-eyebrow {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: clamp(.52rem, 1.6vw, .62rem);
+            letter-spacing: .55em;
+            text-transform: uppercase;
+            color: var(--g1);
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            animation: cfup .9s .5s forwards;
+        }
+        
+        .ct-ornament {
+            width: clamp(220px, 55vw, 340px);
+            margin-bottom: .8rem;
+            opacity: 0;
+            animation: cfup 1.1s .2s forwards;
+            filter: drop-shadow(0 0 18px rgba(201, 168, 76, .25));
+        }
+        
+        .ct-names {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: clamp(2.4rem, 8vw, 5rem);
+            color: var(--cream);
+            text-align: center;
+            line-height: 1.06;
+            opacity: 0;
+            animation: cfup 1s .8s forwards;
+            text-shadow: 0 0 60px rgba(201, 168, 76, .2);
+        }
+        
+        .ct-names em {
+            color: var(--g1);
+            font-style: italic;
+        }
+        
+        .ct-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.9rem, 2.5vw, 1.15rem);
+            color: var(--text2);
+            text-align: center;
+            margin-top: .5rem;
+            letter-spacing: .06em;
+            opacity: 0;
+            animation: cfup 1s 1.1s forwards;
+        }
+        
+        .ct-tap {
+            margin-top: 2.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .8rem;
+            opacity: 0;
+            animation: cfup 1s 1.9s forwards;
+        }
+        
+        .ct-ring {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rPulse 2.4s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(201, 168, 76, .12);
+        }
+        
+        .ct-ring::before {
+            content: '';
+            position: absolute;
+            inset: -9px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, .2);
+            animation: rPulse 2.4s ease-in-out .4s infinite;
+        }
+        
+        .ct-ring svg {
+            width: 20px;
+            height: 20px
+        }
+        
+        .ct-tap-lbl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .6rem;
+            letter-spacing: .5em;
+            text-transform: uppercase;
+            color: var(--g3);
+        }
+        
+        @keyframes cfup {
+            from {
+                opacity: 0;
+                transform: translateY(26px)
+            }
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+        
+        @keyframes rPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: .5
+            }
+        }
+        /* curtain petals */
+        
+        .cpetal {
+            position: absolute;
+            pointer-events: none;
+            animation: cpetalF linear infinite;
+        }
+        
+        @keyframes cpetalF {
+            0% {
+                transform: translateY(-8vh) rotate(0deg);
+                opacity: 0
+            }
+            8% {
+                opacity: var(--op, .25)
+            }
+            90% {
+                opacity: .05
+            }
+            100% {
+                transform: translateY(110vh) rotate(540deg);
+                opacity: 0
+            }
+        }
+        /* ─────── MUSIC BTN ─────── */
+        
+        #mBtn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 9800;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, .35);
+            background: rgba(10, 7, 4, .8);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            box-shadow: 0 2px 16px rgba(201, 168, 76, .1);
+            transition: border-color .3s;
+        }
+        
+        #mBtn.on {
+            display: flex
+        }
+        
+        #mBtn:hover {
+            border-color: var(--g1)
+        }
+        
+        #mBtn svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--g1);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round
+        }
+        /* ─────── TOAST ─────── */
+        
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(14px);
+            background: rgba(15, 10, 5, .92);
+            border: 1px solid rgba(201, 168, 76, .35);
+            backdrop-filter: blur(14px);
+            padding: .62rem 1.7rem;
+            border-radius: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .6rem;
+            letter-spacing: .2em;
+            color: var(--g3);
+            z-index: 9700;
+            opacity: 0;
+            transition: opacity .4s, transform .4s;
+            pointer-events: none;
+            box-shadow: 0 4px 24px rgba(201, 168, 76, .1);
+        }
+        
+        #toast.on {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+        /* ─────── MAIN ─────── */
+        
+        #main {
+            display: none;
+            opacity: 0;
+            transition: opacity .8s
+        }
+        
+        #main.show {
+            display: block;
+            opacity: 1
+        }
+        /* ambient floating particles */
+        
+        #bgP {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden
+        }
+        
+        .bp {
+            position: absolute;
+            pointer-events: none;
+            animation: bpF linear infinite;
+        }
+        
+        @keyframes bpF {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0
+            }
+            7% {
+                opacity: var(--op, .2)
+            }
+            93% {
+                opacity: calc(var(--op, .2)*.3)
+            }
+            100% {
+                transform: translateY(-108vh) rotate(600deg);
+                opacity: 0
+            }
+        }
+        /* ─────── SECTION ─────── */
+        
+        .sec {
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1.5rem;
+            overflow: hidden;
+        }
+        /* section bgs — all dark, each slightly different */
+        
+        #s1 {
+            background: linear-gradient(175deg, #060304 0%, #0d0809 55%, #060304 100%)
+        }
+        
+        #s2 {
+            background: linear-gradient(168deg, #080508 0%, #100a07 55%, #080508 100%)
+        }
+        
+        #s3 {
+            background: linear-gradient(172deg, #060304 0%, #0c0808 55%, #060304 100%)
+        }
+        
+        #s4 {
+            background: linear-gradient(168deg, #0a0708 0%, #120d08 55%, #0a0708 100%)
+        }
+        
+        #s5 {
+            background: linear-gradient(172deg, #060304 0%, #0e0a07 55%, #060304 100%)
+        }
+        
+        #s6 {
+            background: radial-gradient(ellipse 90% 80% at 50% 50%, #110c08 0%, #050305 100%)
+        }
+        /* ambient orb per section */
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(90px);
+            opacity: .07;
+        }
+        /* ─────── REVEAL ─────── */
+        
+        .rv {
+            opacity: 0;
+            transition: opacity .95s ease, transform .95s ease;
+        }
+        
+        .rv.from-up {
+            transform: translateY(34px)
+        }
+        
+        .rv.from-left {
+            transform: translateX(-30px)
+        }
+        
+        .rv.from-right {
+            transform: translateX(30px)
+        }
+        
+        .rv.from-scale {
+            transform: scale(.95)
+        }
+        
+        .rv.d1 {
+            transition-delay: .12s
+        }
+        
+        .rv.d2 {
+            transition-delay: .25s
+        }
+        
+        .rv.d3 {
+            transition-delay: .38s
+        }
+        
+        .rv.d4 {
+            transition-delay: .52s
+        }
+        
+        .rv.d5 {
+            transition-delay: .68s
+        }
+        
+        .in-v .rv {
+            opacity: 1;
+            transform: none
+        }
+        /* ─────── ATOMS ─────── */
+        
+        .eyebrow {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: clamp(.52rem, 1.6vw, .62rem);
+            letter-spacing: .55em;
+            text-transform: uppercase;
+            color: var(--g1);
+            display: block;
+            text-align: center;
+            margin-bottom: .9rem;
+        }
+        
+        .gline {
+            width: 64px;
+            height: 1px;
+            margin: 1.3rem auto;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+        }
+        
+        .gdbl {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: center;
+            margin: 1.2rem auto
+        }
+        
+        .gdbl span {
+            display: block;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent)
+        }
+        
+        .gdbl span:nth-child(1) {
+            width: 64px
+        }
+        
+        .gdbl span:nth-child(2) {
+            width: 32px
+        }
+        /* corner SVG ornament */
+        
+        .csec {
+            position: absolute;
+            pointer-events: none;
+            opacity: .15
+        }
+        
+        .csec.tl {
+            top: 0;
+            left: 0
+        }
+        
+        .csec.tr {
+            top: 0;
+            right: 0;
+            transform: scaleX(-1)
+        }
+        
+        .csec.bl {
+            bottom: 0;
+            left: 0;
+            transform: scaleY(-1)
+        }
+        
+        .csec.br {
+            bottom: 0;
+            right: 0;
+            transform: scale(-1)
+        }
+        /* ─────── S1: HERO ─────── */
+        
+        .s1-names {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+            font-size: clamp(2rem, 10vw, 5.5rem);
+            color: var(--cream);
+            text-align: center;
+            line-height: .94;
+            text-shadow: 0 0 80px rgba(201, 168, 76, .15);
+        }
+        
+        .s1-amp {
+            display: block;
+            font-style: italic;
+            color: var(--g1);
+            font-size: .52em;
+            line-height: 1.75;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .s1-invite {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.95rem, 2.5vw, 1.25rem);
+            color: var(--text2);
+            text-align: center;
+            line-height: 1.95;
+            margin-top: .4rem;
+            letter-spacing: .04em;
+        }
+        
+        .s1-scroll {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem
+        }
+        
+        .s1-scroll span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .52rem;
+            letter-spacing: .45em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .35);
+        }
+        
+        .sline {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--g1), transparent);
+            animation: slP 2.1s ease-in-out infinite
+        }
+        
+        @keyframes slP {
+            0%,
+            100% {
+                opacity: .2;
+                transform: scaleY(.65)
+            }
+            50% {
+                opacity: 1;
+                transform: scaleY(1)
+            }
+        }
+        /* ─────── S2: BISMILLAH ─────── */
+        
+        .bism-card {
+            border: 1px solid rgba(201, 168, 76, .2);
+            border-radius: var(--r);
+            padding: clamp(2rem, 5vw, 3.2rem) clamp(1.5rem, 5vw, 3rem);
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+            background: rgba(255, 255, 255, .025);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 60px rgba(201, 168, 76, .05), inset 0 0 40px rgba(201, 168, 76, .03);
+            position: relative;
+        }
+        
+        .bism-card::before,
+        .bism-card::after {
+            content: '❖';
+            position: absolute;
+            font-size: .65rem;
+            color: var(--g3);
+            opacity: .45;
+        }
+        
+        .bism-card::before {
+            top: .75rem;
+            left: .9rem
+        }
+        
+        .bism-card::after {
+            bottom: .75rem;
+            right: .9rem
+        }
+        /* top glow bar */
+        
+        .bism-card::after {
+            content: none
+        }
+        
+        .bism-card .card-topline {
+            position: absolute;
+            top: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .4;
+        }
+        
+        .bism-card .card-botline {
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .4;
+        }
+        
+        .bism-arabic {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.6rem, 5.5vw, 2.8rem);
+            color: var(--g3);
+            direction: rtl;
+            line-height: 1.7;
+            text-shadow: 0 0 30px rgba(201, 168, 76, .2);
+        }
+        
+        .bism-latin {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.95rem, 2.5vw, 1.2rem);
+            color: var(--text2);
+            margin-top: .5rem;
+            letter-spacing: .08em;
+        }
+        
+        .bism-body {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.9rem, 2.2vw, 1.08rem);
+            color: var(--text3);
+            line-height: 2.1;
+            margin-top: 1.1rem;
+        }
+        /* ─────── S3: SCRATCH ─────── */
+        
+        .scratch-h {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 5.5vw, 3rem);
+            color: var(--cream);
+            text-align: center;
+        }
+        
+        .scratch-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.92rem, 2.4vw, 1.15rem);
+            color: var(--text2);
+            text-align: center;
+            margin-top: .4rem;
+        }
+        
+        .sc-wrap {
+            position: relative;
+            width: clamp(240px, 68vw, 300px);
+            height: clamp(240px, 68vw, 300px);
+            margin: 2.2rem auto 0;
+            filter: drop-shadow(0 0 30px rgba(201, 168, 76, .2));
+        }
+        
+        .sc-reveal {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 50% 40%, #1a1208 0%, #0d0907 100%);
+            border: 1px solid rgba(201, 168, 76, .25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .28rem;
+            padding: 1.4rem;
+        }
+        
+        .scr-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .5rem;
+            letter-spacing: .45em;
+            text-transform: uppercase;
+            color: var(--g1);
+        }
+        
+        .scr-n {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: clamp(.85rem, 2.8vw, 1.15rem);
+            color: var(--cream);
+            text-align: center;
+            line-height: 1.35;
+        }
+        
+        .scr-amp {
+            color: var(--g1);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .scr-date {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(.8rem, 2.6vw, 1.05rem);
+            color: var(--g3);
+            letter-spacing: .08em;
+            margin-top: .25rem;
+        }
+        
+        .scr-venue {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .5rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--text3);
+            margin-top: .1rem;
+            text-align: center;
+        }
+        
+        .scr-heart {
+            font-size: 1.3rem;
+            color: var(--rose);
+            margin-top: .3rem
+        }
+        
+        canvas#sc {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            touch-action: none;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%23d4a843' fill-opacity='.55'/%3E%3C/svg%3E") 20 20, crosshair;
+        }
+        
+        .sc-hint {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .55rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .3);
+            margin-top: 1.2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+        
+        .sc-hint::before,
+        .sc-hint::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201, 168, 76, .2))
+        }
+        /* ─────── S4: COUNTDOWN ─────── */
+        
+        .cd-h {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 5.5vw, 3rem);
+            color: var(--cream);
+            text-align: center;
+        }
+        
+        .cd-h em {
+            color: var(--g1);
+            font-style: italic
+        }
+        
+        .cd-grid {
+            display: flex;
+            gap: clamp(.6rem, 2vw, 1.1rem);
+            margin-top: 2.3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .cd-box {
+            text-align: center;
+            min-width: 74px;
+            padding: 1.1rem .8rem;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(201, 168, 76, .2);
+            border-radius: var(--r);
+            box-shadow: 0 0 30px rgba(201, 168, 76, .06);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cd-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .4;
+        }
+        
+        .cd-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .3;
+        }
+        
+        .cd-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--g3);
+            display: block;
+            line-height: 1;
+        }
+        
+        .cd-lbl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .48rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .4);
+            margin-top: .4rem;
+            display: block;
+        }
+        
+        .cal-a {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            margin-top: 1.8rem;
+            padding: .82rem 1.9rem;
+            border: 1px solid rgba(201, 168, 76, .35);
+            border-radius: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: .6rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--g3);
+            text-decoration: none;
+            background: transparent;
+            cursor: pointer;
+            transition: background .3s, color .3s, border-color .3s;
+        }
+        
+        .cal-a:hover {
+            background: var(--g1);
+            color: #050305;
+            border-color: var(--g1)
+        }
+        
+        .cal-a svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5
+        }
+        /* ─────── S5: VENUE ─────── */
+        
+        .venue-outer {
+            width: min(640px, 94vw);
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(201, 168, 76, .2);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(201, 168, 76, .07), 0 20px 60px rgba(0, 0, 0, .5);
+            transition: transform .4s ease, box-shadow .4s ease;
+            backdrop-filter: blur(6px);
+        }
+        
+        .venue-outer:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 80px rgba(201, 168, 76, .12), 0 24px 70px rgba(0, 0, 0, .55);
+        }
+        
+        .venue-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(140deg, #1a1208 0%, #0d0907 40%, #1a1208 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .venue-img-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        
+        .venue-placeholder-lbl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .52rem;
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .25);
+            margin-top: .4rem;
+        }
+        
+        .venue-img img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity .5s;
+        }
+        
+        .venue-img img.loaded {
+            opacity: 1
+        }
+        /* gold glow overlay */
+        
+        .venue-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent 55%, rgba(5, 3, 5, .75) 100%);
+        }
+        
+        .venue-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1) 20%, var(--g3) 50%, var(--g1) 80%, transparent);
+            opacity: .4;
+        }
+        
+        .venue-info {
+            padding: 1.6rem 1.8rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .venue-text-name {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--cream);
+            letter-spacing: .06em;
+        }
+        
+        .venue-text-loc {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: .58rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .5);
+            margin-top: .22rem;
+            display: block;
+        }
+        
+        .venue-text-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: .95rem;
+            color: var(--g3);
+            display: block;
+            margin-top: .15rem;
+        }
+        
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0;
+            padding: .72rem 1.4rem;
+            border-radius: 2px;
+            background: var(--g1);
+            color: #050305;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: .58rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--g1);
+            transition: background .3s, color .3s;
+            white-space: nowrap;
+        }
+        
+        .map-btn:hover {
+            background: transparent;
+            color: var(--g1)
+        }
+        
+        .map-btn svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8
+        }
+        /* ─────── S6: THANK YOU ─────── */
+        
+        .ty-card {
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.5rem, 5vw, 2.5rem);
+            border: 1px solid rgba(201, 168, 76, .18);
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .025);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 60px rgba(201, 168, 76, .06);
+            position: relative;
+        }
+        
+        .ty-card .card-topline {
+            position: absolute;
+            top: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .35;
+        }
+        
+        .ty-card .card-botline {
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--g1), transparent);
+            opacity: .25;
+        }
+        
+        .ty-card::before,
+        .ty-card::after {
+            content: '❖';
+            position: absolute;
+            font-size: .6rem;
+            color: var(--g3);
+            opacity: .4;
+        }
+        
+        .ty-card::before {
+            top: .8rem;
+            left: 1rem
+        }
+        
+        .ty-card::after {
+            bottom: .8rem;
+            right: 1rem
+        }
+        
+        .ty-h {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: clamp(2.6rem, 8vw, 4.8rem);
+            color: var(--cream);
+            text-shadow: 0 0 60px rgba(201, 168, 76, .15);
+        }
+        
+        .ty-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.95rem, 2.5vw, 1.18rem);
+            color: var(--text2);
+            line-height: 2.1;
+            margin-top: .9rem;
+        }
+        
+        .ty-names {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 4vw, 1.9rem);
+            color: var(--g3);
+            margin-top: 1.4rem;
+        }
+        
+        .ty-heart {
+            font-size: 2rem;
+            color: var(--rose);
+            display: block;
+            margin: .9rem auto;
+            animation: hbeat 2.3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(200, 120, 136, .4));
+        }
+        
+        @keyframes hbeat {
+            0%,
+            100% {
+                transform: scale(1)
+            }
+            30% {
+                transform: scale(1.22)
+            }
+            60% {
+                transform: scale(1.07)
+            }
+        }
+        
+        .hashtag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: .5rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: rgba(201, 168, 76, .22);
+            margin-top: .7rem;
+            display: block;
+        }
+        /* celebration */
+        
+        .cel {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9600;
+            animation: celF linear forwards
+        }
+        
+        @keyframes celF {
+            0% {
+                transform: translateY(-20px) rotate(0);
+                opacity: 1
+            }
+            100% {
+                transform: translateY(110vh) rotate(740deg);
+                opacity: 0
+            }
+        }
+        
+        @media(max-width:480px) {
+            .cd-box {
+                min-width: 60px;
+                padding: 1rem .6rem
+            }
+            .cd-num {
+                font-size: 1.75rem
+            }
+            .venue-info {
+                flex-direction: column;
+                align-items: flex-start
+            }
+            .bism-card {
+                padding: 1.6rem 1.2rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="starCanvas"></canvas>
+    <audio id="aud" loop>
+  <source src="music/wedSong.mpeg" type="audio/mpeg"/>
+</audio>
+    <button id="mBtn" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24">
+    <polygon id="mNote" points="9,3 9,17 5,14 5,6" stroke="#c9a84c" stroke-linejoin="round"/>
+    <line x1="13" y1="8" x2="18" y2="8" stroke="#c9a84c"/>
+    <line x1="13" y1="12" x2="17" y2="12" stroke="#c9a84c"/>
+    <line id="mX1" x1="12" y1="4" x2="20" y2="20" stroke="#c9a84c" display="none"/>
+    <line id="mX2" x1="20" y1="4" x2="12" y2="20" stroke="#c9a84c" display="none"/>
+  </svg>
+</button>
+    <div id="toast"></div>
+
+    <!-- ══════════ CURTAIN ══════════ -->
+    <div id="curtain" onclick="openInv()">
+        <svg class="cc tl" style="width:clamp(80px,14vw,130px);height:clamp(80px,14vw,130px)" viewBox="0 0 130 130" fill="none">
+    <path d="M2 2L2 90" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <path d="M2 2L90 2" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <circle cx="2" cy="2" r="3.5" fill="#c9a84c" opacity=".5"/>
+    <path d="M14 2L2 2L2 14" stroke="#c9a84c" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M22 2Q32 22 22 42Q12 22 22 2Z" fill="#c9a84c" opacity=".15"/>
+    <path d="M2 22Q22 32 42 22Q22 12 2 22Z" fill="#c9a84c" opacity=".15"/>
+    <circle cx="55" cy="2" r="1.2" fill="#c87888" opacity=".3"/>
+    <circle cx="2" cy="55" r="1.2" fill="#c87888" opacity=".3"/>
+  </svg>
+        <svg class="cc tr" style="width:clamp(80px,14vw,130px);height:clamp(80px,14vw,130px)" viewBox="0 0 130 130" fill="none">
+    <path d="M2 2L2 90" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <path d="M2 2L90 2" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <circle cx="2" cy="2" r="3.5" fill="#c9a84c" opacity=".5"/>
+    <path d="M14 2L2 2L2 14" stroke="#c9a84c" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M22 2Q32 22 22 42Q12 22 22 2Z" fill="#c9a84c" opacity=".15"/>
+    <path d="M2 22Q22 32 42 22Q22 12 2 22Z" fill="#c9a84c" opacity=".15"/>
+  </svg>
+        <svg class="cc bl" style="width:clamp(80px,14vw,130px);height:clamp(80px,14vw,130px)" viewBox="0 0 130 130" fill="none">
+    <path d="M2 2L2 90" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <path d="M2 2L90 2" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <circle cx="2" cy="2" r="3.5" fill="#c9a84c" opacity=".5"/>
+    <path d="M14 2L2 2L2 14" stroke="#c9a84c" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M22 2Q32 22 22 42Q12 22 22 2Z" fill="#c9a84c" opacity=".15"/>
+    <path d="M2 22Q22 32 42 22Q22 12 2 22Z" fill="#c9a84c" opacity=".15"/>
+  </svg>
+        <svg class="cc br" style="width:clamp(80px,14vw,130px);height:clamp(80px,14vw,130px)" viewBox="0 0 130 130" fill="none">
+    <path d="M2 2L2 90" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <path d="M2 2L90 2" stroke="#c9a84c" stroke-width=".5" opacity=".4"/>
+    <circle cx="2" cy="2" r="3.5" fill="#c9a84c" opacity=".5"/>
+    <path d="M14 2L2 2L2 14" stroke="#c9a84c" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M22 2Q32 22 22 42Q12 22 22 2Z" fill="#c9a84c" opacity=".15"/>
+    <path d="M2 22Q22 32 42 22Q22 12 2 22Z" fill="#c9a84c" opacity=".15"/>
+  </svg>
+
+        <div id="cPetals"></div>
+
+        <span class="ct-eyebrow">A Wedding Invitation</span>
+        <svg class="ct-ornament" viewBox="0 0 360 120" fill="none">
+    <line x1="0" y1="60" x2="118" y2="60" stroke="#c9a84c" stroke-width=".45" opacity=".45"/>
+    <line x1="242" y1="60" x2="360" y2="60" stroke="#c9a84c" stroke-width=".45" opacity=".45"/>
+    <circle cx="180" cy="60" r="48" stroke="#c9a84c" stroke-width=".5" opacity=".45"/>
+    <circle cx="180" cy="60" r="37" stroke="#c9a84c" stroke-width=".3" stroke-dasharray="3 5" opacity=".3"/>
+    <path d="M180 26L185.5 52L212 58L185.5 64L191 90L180 66L169 90L174.5 64L148 58L174.5 52Z" fill="#c9a84c" opacity=".55"/>
+    <circle cx="118" cy="60" r="2.5" fill="#c9a84c" opacity=".45"/>
+    <circle cx="242" cy="60" r="2.5" fill="#c9a84c" opacity=".45"/>
+    <circle cx="72" cy="60" r="1.4" fill="#c9a84c" opacity=".28"/>
+    <circle cx="288" cy="60" r="1.4" fill="#c9a84c" opacity=".28"/>
+    <path d="M118 44Q146 26 180 44Q146 62 118 44Z" fill="#c9a84c" opacity=".12"/>
+    <path d="M242 44Q214 26 180 44Q214 62 242 44Z" fill="#c9a84c" opacity=".12"/>
+    <path d="M118 76Q146 94 180 76Q146 58 118 76Z" fill="#c9a84c" opacity=".12"/>
+    <path d="M242 76Q214 94 180 76Q214 58 242 76Z" fill="#c9a84c" opacity=".12"/>
+  </svg>
+        <h1 class="ct-names">Sabah Suleiman <em>&</em> Abdul Wahil</h1>
+        <p class="ct-sub">Request the pleasure of your company</p>
+        <div class="ct-tap">
+            <div class="ct-ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+            </div>
+            <span class="ct-tap-lbl">Tap To Open</span>
+        </div>
+    </div>
+
+    <!-- ══════════ MAIN ══════════ -->
+    <div id="main">
+        <div id="bgP"></div>
+
+        <!-- S1 -->
+        <section class="sec" id="s1">
+            <div class="orb" style="width:500px;height:400px;background:radial-gradient(circle,rgba(201,168,76,1),transparent);top:10%;left:50%;transform:translateX(-50%)"></div>
+            <svg class="csec tl" width="180" height="180" viewBox="0 0 180 180" fill="none">
+      <path d="M0 0L0 110" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <path d="M0 0L110 0" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <circle cx="0" cy="0" r="4" fill="#c9a84c" opacity=".35"/>
+      <path d="M22 0Q32 24 22 48Q12 24 22 0Z" fill="#c9a84c" opacity=".14"/>
+      <path d="M0 22Q24 32 48 22Q24 12 0 22Z" fill="#c9a84c" opacity=".14"/>
+      <circle cx="58" cy="10" r="2" fill="#c87888" opacity=".25"/>
+      <circle cx="10" cy="58" r="2" fill="#c87888" opacity=".25"/>
+    </svg>
+            <svg class="csec tr" width="180" height="180" viewBox="0 0 180 180" fill="none">
+      <path d="M0 0L0 110" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <path d="M0 0L110 0" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <circle cx="0" cy="0" r="4" fill="#c9a84c" opacity=".35"/>
+      <path d="M22 0Q32 24 22 48Q12 24 22 0Z" fill="#c9a84c" opacity=".14"/>
+      <path d="M0 22Q24 32 48 22Q24 12 0 22Z" fill="#c9a84c" opacity=".14"/>
+    </svg>
+            <svg class="csec bl" width="180" height="180" viewBox="0 0 180 180" fill="none">
+      <path d="M0 0L0 110" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <path d="M0 0L110 0" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <circle cx="0" cy="0" r="4" fill="#c9a84c" opacity=".35"/>
+      <path d="M22 0Q32 24 22 48Q12 24 22 0Z" fill="#c9a84c" opacity=".14"/>
+      <path d="M0 22Q24 32 48 22Q24 12 0 22Z" fill="#c9a84c" opacity=".14"/>
+    </svg>
+            <svg class="csec br" width="180" height="180" viewBox="0 0 180 180" fill="none">
+      <path d="M0 0L0 110" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <path d="M0 0L110 0" stroke="#c9a84c" stroke-width=".5" opacity=".35"/>
+      <circle cx="0" cy="0" r="4" fill="#c9a84c" opacity=".35"/>
+      <path d="M22 0Q32 24 22 48Q12 24 22 0Z" fill="#c9a84c" opacity=".14"/>
+      <path d="M0 22Q24 32 48 22Q24 12 0 22Z" fill="#c9a84c" opacity=".14"/>
+    </svg>
+            <div style="position:relative;z-index:2;text-align:center">
+                <span class="eyebrow rv from-up">Together With Their Families</span>
+                <h2 class="s1-names rv from-up d1">Sabah<span class="s1-amp">&</span>Abdul Wahid</h2>
+                <div class="gdbl rv from-up d2"><span></span><span></span></div>
+                <p class="s1-invite rv from-up d3">Invite you to celebrate the beginning<br/>of their beautiful journey together</p>
+                <div class="s1-scroll rv from-up d4"><span>Scroll to continue</span>
+                    <div class="sline"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S2 THANK -->
+        <section class="sec" id="s2">
+            <div class="orb" style="width:400px;height:350px;background:radial-gradient(circle,rgba(201,168,76,1),transparent);top:20%;left:50%;transform:translateX(-50%)"></div>
+            <div class="bism-card rv from-scale">
+                <div class="card-topline"></div>
+                <div class="card-botline"></div>
+                <p class="bism-arabic rv from-up d1">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+                <p class="bism-latin rv from-up d2">Bismillahir Rahmanir Raheem</p>
+                <div class="gline rv from-up d2"></div>
+                <p class="bism-body rv from-up d3">With the heavenly blessings of Allah,<br/>two hearts begin one beautiful journey.<br/>Together with their families, they warmly invite you<br/>to witness and celebrate their sacred union.</p>
+            </div>
+        </section>
+
+        <!-- S3 SCRATCH -->
+        <section class="sec" id="s3">
+            <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(200,120,136,1),transparent);top:20%;left:50%;transform:translateX(-50%)"></div>
+            <span class="eyebrow rv from-up">An Exclusive Reveal</span>
+            <h2 class="scratch-h rv from-up d1">Scratch To Discover</h2>
+            <p class="scratch-sub rv from-up d2">Scratch the golden circle to reveal the wedding date</p>
+            <div class="sc-wrap rv from-scale d3" id="scWrap">
+                <div class="sc-reveal" id="scRev">
+                    <span class="scr-tag">Save The Date</span>
+                    <div class="scr-n">Sabah Suleiman<br/><span class="scr-amp">&</span><br/>Abdul Wahid</div>
+                    <div class="scr-date">13 · August · 2026</div>
+                    <div class="scr-venue">Melinne Saccos Hall · Zanzibar</div>
+                    <div class="scr-heart">♡</div>
+                </div>
+                <canvas id="sc"></canvas>
+            </div>
+            <p class="sc-hint rv from-up d4">Scratch the circle above</p>
+        </section>
+
+        <!-- S4 COUNTDOWN-->
+        <section class="sec" id="s4">
+            <div class="orb" style="width:500px;height:300px;background:radial-gradient(circle,rgba(201,168,76,1),transparent);top:15%;left:50%;transform:translateX(-50%)"></div>
+            <span class="eyebrow rv from-up">Counting Every Precious Moment</span>
+            <h2 class="cd-h rv from-up d1">Until <em>Forever Begins</em></h2>
+            <div class="gline rv from-up d1"></div>
+            <div class="cd-grid rv from-up d2">
+                <div class="cd-box"><span class="cd-num" id="cdD">--</span><span class="cd-lbl">Days</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdH">--</span><span class="cd-lbl">Hours</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdM">--</span><span class="cd-lbl">Minutes</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdS">--</span><span class="cd-lbl">Seconds</span></div>
+            </div>
+            <a class="cal-a rv from-up d3" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sabah+%26+Abdul+Wahil+Wedding&dates=20260813/20260814&details=The+wedding+of+Sabah+Suleiman+%26+Abdul+Wahil&location=Melinne+Saccos+Hall,+Fuoni,+Zanzibar"
+                target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg> Add To Calendar
+            </a>
+        </section>
+
+        <!-- S5 VENUE -->
+        <section class="sec" id="s5">
+            <div class="orb" style="width:400px;height:350px;background:radial-gradient(circle,rgba(201,168,76,1),transparent);top:20%;left:50%;transform:translateX(-50%)"></div>
+            <span class="eyebrow rv from-up">The Celebration Will Take Place</span>
+            <p class="rv from-up d1" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.15rem);color:var(--text3);text-align:center;margin-bottom:2rem;">at a venue as beautiful as the love it holds</p>
+            <div class="venue-outer rv from-scale d2">
+                <div class="venue-img">
+                    <img id="venueImg" src="IMAGE/img1.jpeg" alt="Melinne Saccos Hall" onload="this.classList.add('loaded')" />
+                    <div class="venue-img-inner" id="venuePlaceholder">
+                        <svg width="clamp(180px,55%,320px)" viewBox="0 0 340 180" fill="none" style="opacity:.4">
+            <defs><linearGradient id="vsk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1208"/><stop offset="100%" stop-color="#0d0907"/></linearGradient></defs>
+            <rect width="340" height="180" fill="url(#vsk)"/>
+            <rect x="0" y="145" width="340" height="35" fill="#251a08" opacity=".5"/>
+            <rect x="60" y="80" width="220" height="65" fill="#1a1208" stroke="#c9a84c" stroke-width=".7"/>
+            <polygon points="50,80 170,30 290,80" fill="#120d06" stroke="#c9a84c" stroke-width=".7"/>
+            <path d="M148 145L148 105Q170 90 192 105L192 145Z" fill="#1a1208" stroke="#c9a84c" stroke-width=".6"/>
+            <rect x="80" y="95" width="28" height="22" rx="2" fill="#241808" stroke="#c9a84c" stroke-width=".5"/>
+            <rect x="232" y="95" width="28" height="22" rx="2" fill="#241808" stroke="#c9a84c" stroke-width=".5"/>
+            <rect x="130" y="80" width="6" height="65" fill="#241808" stroke="#c9a84c" stroke-width=".4"/>
+            <rect x="204" y="80" width="6" height="65" fill="#241808" stroke="#c9a84c" stroke-width=".4"/>
+            <circle cx="183" cy="128" r="2" fill="#c9a84c" opacity=".6"/>
+            <circle cx="170" cy="30" r="5" fill="#c9a84c" opacity=".35"/>
+            <path d="M162 25L170 8L178 25" stroke="#c9a84c" stroke-width=".6" fill="none"/>
+            <circle cx="170" cy="8" r="2.5" fill="#c9a84c" opacity=".5"/>
+            <ellipse cx="50" cy="145" rx="18" ry="10" fill="#2a1e0a" opacity=".5"/>
+            <ellipse cx="290" cy="145" rx="18" ry="10" fill="#2a1e0a" opacity=".5"/>
+          </svg>
+                        <span class="venue-placeholder-lbl">Venue Photo</span>
+                    </div>
+                    <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(5,3,5,.8),transparent);pointer-events:none"></div>
+                </div>
+                <div class="venue-divider"></div>
+                <div class="venue-info">
+                    <div>
+                        <div class="venue-text-name">Melinne Saccos Hall</div>
+                        <span class="venue-text-loc">Fuoni, Zanzibar</span>
+                        <span class="venue-text-date">Thursday, 13 August 2026</span>
+                    </div>
+                    <a class="map-btn" href="https://maps.app.goo.gl/cwiHJQm3tgJcnG7g6" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 21s-8-7.5-8-12a8 8 0 0116 0c0 4.5-8 12-8 12z"/><circle cx="12" cy="9" r="2"/></svg> View Venue Location
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- S6 FINAL-->
+        <section class="sec" id="s6">
+            <div class="orb" style="width:500px;height:400px;background:radial-gradient(circle,rgba(201,168,76,1),transparent);top:20%;left:50%;transform:translateX(-50%)"></div>
+            <div class="ty-card rv from-scale">
+                <div class="card-topline"></div>
+                <div class="card-botline"></div>
+                <span class="eyebrow rv from-up d1">With Love & Gratitude</span>
+                <h2 class="ty-h rv from-up d1">Thank You</h2>
+                <div class="gline rv from-up d2"></div>
+                <p class="ty-msg rv from-up d2">For joining us on this special day.<br/>Your presence, your love, and your blessings<br/>are the greatest gifts we could ever receive.</p>
+                <span class="ty-heart rv from-up d3">♡</span>
+                <div class="ty-names rv from-up d3">Sabah Suleiman & Abdul Wahid</div>
+                <div class="gdbl rv from-up d4" style="margin-top:1.1rem"><span></span><span></span></div>
+                <span class="hashtag rv from-up d5">#Hashim</span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* ── STAR CANVAS ── */
+        (function() {
+            const cv = document.getElementById('starCanvas');
+            const ctx = cv.getContext('2d');
+            let stars = [];
+
+            function resize() {
+                cv.width = window.innerWidth;
+                cv.height = window.innerHeight;
+                buildStars();
+            }
+
+            function buildStars() {
+                stars = [];
+                for (let i = 0; i < 220; i++) {
+                    stars.push({
+                        x: Math.random() * cv.width,
+                        y: Math.random() * cv.height,
+                        r: Math.random() * 1.2 + .2,
+                        op: Math.random() * .5 + .05,
+                        speed: Math.random() * .008 + .003,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+            let t = 0;
+
+            function draw() {
+                ctx.clearRect(0, 0, cv.width, cv.height);
+                t += .012;
+                stars.forEach(s => {
+                    const a = s.op * (0.4 + 0.6 * Math.abs(Math.sin(t * s.speed * 60 + s.phase)));
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(201,168,76,${a})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+            resize();
+            draw();
+            window.addEventListener('resize', resize);
+        })();
+
+        /* ── CURTAIN PETALS ── */
+        (function() {
+            const c = document.getElementById('cPetals');
+            c.style.cssText = 'position:absolute;inset:0;pointer-events:none;overflow:hidden';
+            const sym = ['✦', '✧', '·', '★', '✸', '⁕', '✺'];
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'cpetal';
+                const dur = 12 + Math.random() * 14,
+                    op = .08 + Math.random() * .18;
+                p.style.cssText = `left:${Math.random()*100}%;font-size:${8+Math.random()*10}px;
+      color:rgba(201,168,76,${op});--op:${op};
+      animation-duration:${dur}s;animation-delay:${-Math.random()*dur}s`;
+                p.textContent = sym[Math.floor(Math.random() * sym.length)];
+                c.appendChild(p);
+            }
+        })();
+
+        /* ── OPEN ── */
+        function openInv() {
+            document.getElementById('curtain').classList.add('away');
+            const a = document.getElementById('aud');
+            a.volume = .38;
+            a.play().catch(() => {});
+            setTimeout(() => {
+                document.getElementById('curtain').style.display = 'none';
+                const m = document.getElementById('main');
+                m.style.display = 'block';
+                document.getElementById('mBtn').classList.add('on');
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    m.classList.add('show');
+                    startPetals();
+                    startReveal();
+                    initScratch();
+                    startCD();
+                }));
+            }, 1100);
+        }
+
+        /* ── BG PARTICLES ── */
+        function startPetals() {
+            const cont = document.getElementById('bgP');
+            const sym = ['✦', '✧', '·', '★', '✸', '⁕'];
+            for (let i = 0; i < 40; i++) {
+                const p = document.createElement('div');
+                p.className = 'bp';
+                const txt = Math.random() < .6,
+                    op = .07 + Math.random() * .12;
+                const dur = 18 + Math.random() * 20;
+                const col = Math.random() < .7 ? `rgba(201,168,76,${op})` : `rgba(200,120,136,${op})`;
+                p.style.cssText = `left:${Math.random()*100}%;bottom:${-5-Math.random()*15}%;
+      --op:${op};animation-duration:${dur}s;animation-delay:${-Math.random()*dur}s;
+      ${txt?`font-size:${6+Math.random()*8}px;color:${col}`
+        :`width:${1.5+Math.random()*2.5}px;height:${1.5+Math.random()*2.5}px;border-radius:50%;background:${col}`}`;
+    if(txt)p.textContent=sym[Math.floor(Math.random()*sym.length)];
+    cont.appendChild(p);
+  }
+}
+
+/* ── REVEAL ── */
+function startReveal(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-v')});
+  },{threshold:.1});
+  document.querySelectorAll('.sec').forEach(s=>io.observe(s));
+}
+
+/* ── SCRATCH CARD ── */
+function initScratch(){
+  const wrap=document.getElementById('scWrap');
+  const cv=document.getElementById('sc');
+  const ctx=cv.getContext('2d');
+  let W,H,done=false,isDown=false,scratched=0;
+
+  function setup(){
+    W=wrap.offsetWidth;H=wrap.offsetHeight;cv.width=W;cv.height=H;drawGold();
+  }
+
+  function drawGold(){
+    ctx.save();
+    ctx.beginPath();ctx.arc(W/2,H/2,W/2-.5,0,Math.PI*2);ctx.clip();
+    /* base gold */
+    const g1=ctx.createLinearGradient(0,0,W,H);
+    g1.addColorStop(0,'#c09040');g1.addColorStop(.08,'#e8c870');
+    g1.addColorStop(.18,'#b07830');g1.addColorStop(.3,'#f5e098');
+    g1.addColorStop(.45,'#c8a040');g1.addColorStop(.58,'#f0d868');
+    g1.addColorStop(.72,'#a87028');g1.addColorStop(.85,'#e8c060');
+    g1.addColorStop(1,'#c09040');
+    ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
+    /* radial shine */
+    const g2=ctx.createRadialGradient(W*.33,H*.28,0,W*.5,H*.5,W*.62);
+    g2.addColorStop(0,'rgba(255,250,210,.65)');
+    g2.addColorStop(.35,'rgba(255,238,160,.18)');
+    g2.addColorStop(1,'rgba(80,45,5,.22)');
+    ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+    /* diagonal streak */
+    const g3=ctx.createLinearGradient(W*.1,0,W*.65,H);
+    g3.addColorStop(0,'rgba(255,252,220,0)');
+    g3.addColorStop(.43,'rgba(255,252,220,.4)');
+    g3.addColorStop(.54,'rgba(255,252,220,.08)');
+    g3.addColorStop(1,'rgba(255,252,220,0)');
+    ctx.fillStyle=g3;ctx.fillRect(0,0,W,H);
+    /* texture lines */
+    ctx.strokeStyle='rgba(255,248,180,.05)';ctx.lineWidth=1;
+    for(let y=0;y<H;y+=3){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    /* center motif */
+    ctx.globalAlpha=.18;ctx.fillStyle='#5a3508';
+    ctx.font=`${W*.28}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('❀',W/2,H/2+4);ctx.globalAlpha=1;
+    /* outer ring */
+    ctx.strokeStyle='rgba(140,90,20,.35)';ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(W/2,H/2,W/2-1.5,0,Math.PI*2);ctx.stroke();
+    /* inner dashed ring */
+    ctx.strokeStyle='rgba(255,248,180,.25)';ctx.lineWidth=1;ctx.setLineDash([3,5]);
+    ctx.beginPath();ctx.arc(W/2,H/2,W/2-9,0,Math.PI*2);ctx.stroke();
+    ctx.setLineDash([]);
+    /* text */
+    ctx.fillStyle='rgba(80,45,8,.55)';
+    ctx.font=`200 ${Math.max(10,W*.07)}px Montserrat,sans-serif`;
+    ctx.letterSpacing='.3em';ctx.fillText('SCRATCH',W/2,H*.41);
+    ctx.font=`200 ${Math.max(9,W*.056)}px Montserrat,sans-serif`;
+    ctx.fillText('TO  REVEAL',W/2,H*.55);
+    ctx.restore();
+    ctx.globalCompositeOperation='destination-out';
+  }
+
+  function getXY(e){
+    const r=cv.getBoundingClientRect();
+    if(e.touches)return{x:e.touches[0].clientX-r.left,y:e.touches[0].clientY-r.top};
+    return{x:e.clientX-r.left,y:e.clientY-r.top};
+  }
+  function doScratch(e){
+    if(!isDown||done)return;e.preventDefault();
+    const{x,y}=getXY(e);
+    const r=Math.max(W*.1,26);
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+    scratched+=Math.PI*r*r;
+    if(scratched/(Math.PI*(W/2)*(W/2))>.46&&!done){
+      done=true;setTimeout(()=>{ctx.clearRect(0,0,W,H);celebrate();},180);
+    }
+  }
+  cv.addEventListener('mousedown',e=>{isDown=true;doScratch(e)});
+  cv.addEventListener('mousemove',doScratch);
+  cv.addEventListener('mouseup',()=>isDown=false);
+  cv.addEventListener('mouseleave',()=>isDown=false);
+  cv.addEventListener('touchstart',e=>{isDown=true;doScratch(e)},{passive:false});
+  cv.addEventListener('touchmove',doScratch,{passive:false});
+  cv.addEventListener('touchend',()=>isDown=false);
+  setTimeout(setup,120);
+  window.addEventListener('resize',()=>setTimeout(setup,80));
+}
+
+/* ── CELEBRATE ── */
+function celebrate(){
+  const pal=['#c9a84c','#d4a843','#e8c97a','#f5e4b8','#ffffff',
+             '#c87888','#e8a0b0','#ffe066','#ffd700','#fff8dc','#ffb347'];
+  const sym=['✿','❀','✾','❁','✦','★','·','❋','♡','✸','⁕','✺'];
+  for(let i=0;i<200;i++){
+    setTimeout(()=>{
+      const type=Math.random();
+      const el=document.createElement('div');
+      el.style.cssText='position:fixed;pointer-events:none;z-index:9600;top:-30px;';
+      el.style.left=(3+Math.random()*94)+'%';
+      const col=pal[Math.floor(Math.random()*pal.length)];
+      const dur=(2.5+Math.random()*3.5)+'s';
+      const delay=(Math.random()*1)+'s';
+      const rot=Math.floor(Math.random()*800);
+      const drift=(-80+Math.random()*160)+'px';
+      if(type<.38){
+        const fs=10+Math.random()*16;
+        el.style.fontSize=fs+'px';el.style.color=col;
+        el.textContent=sym[Math.floor(Math.random()*sym.length)];
+      } else if(type<.68){
+        const w=3+Math.random()*8,h=w*(1.4+Math.random());
+        el.style.width=w+'px';el.style.height=h+'px';
+        el.style.background=col;el.style.borderRadius='1px';
+      } else {
+        const s=3+Math.random()*7;
+        el.style.width=s+'px';el.style.height=s+'px';
+        el.style.background=col;el.style.borderRadius='50%';
+      }
+      const kn='ck'+i+'x'+Date.now();
+      const kf=`@keyframes ${kn}{0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) translateX(${drift}) rotate(${rot}deg);opacity:0}}`;
+      const st=document.createElement('style');st.textContent=kf;document.head.appendChild(st);
+      el.style.animation=`${kn} ${dur} ${delay} linear forwards`;
+      document.body.appendChild(el);
+      setTimeout(()=>{el.remove();if(st.parentNode)st.remove();},8000);
+    },i*16);
+  }
+  /* sparkle burst from circle */
+  const wrap=document.getElementById('scWrap');
+  if(wrap){
+    const r=wrap.getBoundingClientRect();
+    const cx=r.left+r.width/2,cy=r.top+r.height/2;
+    for(let s=0;s<28;s++){
+      const sp=document.createElement('div');
+      sp.style.cssText=`position:fixed;pointer-events:none;z-index:9700;left:${cx}px;top:${cy}px;width:5px;height:5px;border-radius:50%;background:${pal[s%5]};`;
+      const angle=(s/28)*Math.PI*2;
+      const dist=80+Math.random()*100;
+      const dx=Math.cos(angle)*dist,dy=Math.sin(angle)*dist;
+      const kn='spk'+s+'_'+Date.now();
+      const kf=`@keyframes ${kn}{0%{transform:translate(-50%,-50%) scale(2);opacity:1}100%{transform:translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(0);opacity:0}}`;
+      const st=document.createElement('style');st.textContent=kf;document.head.appendChild(st);
+      sp.style.animation=`${kn} 1s ease-out forwards`;
+      document.body.appendChild(sp);
+      setTimeout(()=>{sp.remove();if(st.parentNode)st.remove();},1800);
+    }
+  }
+  /* gold ring pulse */
+  const wrap2=document.getElementById('scWrap');
+  if(wrap2){
+    const r=wrap2.getBoundingClientRect();
+    const cx=r.left+r.width/2,cy=r.top+r.height/2;
+    for(let ring=0;ring<3;ring++){
+      setTimeout(()=>{
+        const rc=document.createElement('div');
+        rc.style.cssText=`position:fixed;pointer-events:none;z-index:9650;
+          border:2px solid rgba(201,168,76,0.7);border-radius:50%;
+          left:${cx}px;top:${cy}px;width:10px;height:10px;
+          transform:translate(-50%,-50%);`;
+        const kn='rg'+ring+'_'+Date.now();
+        const kf=`@keyframes ${kn}{0%{transform:translate(-50%,-50%) scale(1);opacity:.8}100%{transform:translate(-50%,-50%) scale(18);opacity:0}}`;
+        const st=document.createElement('style');st.textContent=kf;document.head.appendChild(st);
+        rc.style.animation=`${kn} 1.2s ease-out forwards`;
+        document.body.appendChild(rc);
+        setTimeout(()=>{rc.remove();if(st.parentNode)st.remove();},1500);
+      },ring*280);
+    }
+  }
+  toast('✦  The Date Is Revealed  ✦');
+}
+
+/* ── COUNTDOWN ── */
+function startCD(){
+  const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    const diff=Math.max(0,new Date('2026-08-13T10:00:00')-new Date());
+    document.getElementById('cdD').textContent=pad(Math.floor(diff/86400000));
+    document.getElementById('cdH').textContent=pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cdM').textContent=pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cdS').textContent=pad(Math.floor((diff%60000)/1000));
+  }
+  tick();setInterval(tick,1000);
+}
+
+/* ── MUSIC ── */
+let muted=false;
+document.getElementById('mBtn').addEventListener('click',()=>{
+  const a=document.getElementById('aud');
+  const x1=document.getElementById('mX1'),x2=document.getElementById('mX2');
+  const note=document.getElementById('mNote');
+  if(muted){
+    a.play();muted=false;
+    x1.setAttribute('display','none');x2.setAttribute('display','none');
+    note.style.opacity='1';toast('♪  Music on');
+  } else {
+    a.pause();muted=true;
+    x1.setAttribute('display','');x2.setAttribute('display','');
+    note.style.opacity='.3';toast('Music muted');
+  }
+});
+
+/* ── TOAST ── */
+let tT;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('on'),2800);
+}
+    </script>
+</body>
+
+</html>
